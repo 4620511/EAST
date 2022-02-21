@@ -41,10 +41,12 @@ class Detector:
 
         return t(image).unsqueeze(0)  # type: ignore
 
-    def _get_rotate_mat(self, theta: float) -> np.ndarray:
+    @staticmethod
+    def _get_rotate_mat(theta: float) -> np.ndarray:
         return np.array([[math.cos(theta), -math.sin(theta)], [math.sin(theta), math.cos(theta)]])
 
-    def _is_valid_poly(self, res: np.ndarray, score_shape: tuple[int, int], scale: int) -> bool:
+    @staticmethod
+    def _is_valid_poly(res: np.ndarray, score_shape: tuple[int, int], scale: int) -> bool:
         """Check if the poly in image scope.
 
         Args:
