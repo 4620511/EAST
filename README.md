@@ -1,5 +1,25 @@
 # EAST
 
+## Installation
+
+### 1. Clone this repository
+
+```bash
+git clone https://github.com/4620511/EAST
+```
+
+### 2. Download pre-trained weights
+
+```bash
+./scripts/download.sh
+```
+
+### 3. Install dependencies
+
+```bash
+poetry install
+```
+
 ## Usage
 
 ### Demo
