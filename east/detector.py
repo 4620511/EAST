@@ -16,8 +16,8 @@ class Detector:
         self._device = device
         self._logger = logger if logger is not None else loguru.logger
 
-        self._east = EAST(pretrained=False).to(device)
-        self._east.load_state_dict(torch.load(checkpoint_path))
+        self._model = EAST(pretrained=False).to(device)
+        self._model.load_state_dict(torch.load(checkpoint_path))
         self._logger.debug("state dict was loaded into EAST model")
 
     @staticmethod
@@ -161,10 +161,10 @@ class Detector:
 
     @torch.no_grad()
     def detect(self, image: Image.Image) -> np.ndarray:
-        self._east.eval()
+        self._model.eval()
 
         image, ratio_h, ratio_w = self._make_divisible(image, 32)
-        score, geo = self._east(self._pil2tensor(image).to(self._device))
+        score, geo = self._model(self._pil2tensor(image).to(self._device))
 
         boxes = self._get_boxes(score.squeeze(0).cpu().numpy(), geo.squeeze(0).cpu().numpy())
         self._logger.debug(f"found {boxes.size // 9 } boxes")
