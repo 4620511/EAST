@@ -8,16 +8,16 @@
 git clone https://github.com/4620511/EAST
 ```
 
-### 2. Download pre-trained weights
-
-```bash
-./scripts/download.sh
-```
-
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 poetry install
+```
+
+### 3. Download pre-trained weights
+
+```bash
+./scripts/download.sh
 ```
 
 ## Usage
