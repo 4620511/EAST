@@ -8,7 +8,7 @@
 poetry run poe demo
 ```
 
-Default port is 8888.
+Default port is 8888.  
 Change by editing `.streamlit/config.toml`.
 
 ### Use your dataset
